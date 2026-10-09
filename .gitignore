@@ -1,0 +1,138 @@
+# ── Model weights, optimizer states, checkpoints (large + reproducible) ──
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.gguf
+*.ckpt
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# ── Run logs & experiment artifacts ──
+logs/
+wandb/
+*.log
+
+# ── Data backups (derived; regenerable from the pipeline) ──
+*.dupbak
+*.preexpand.bak
+
+# ── Separate/nested project (not part of RL_V2) ──
+train-llm-from-scratch/
+
+# ── Env / secrets ──
+.env
+.venv/
+*.key
+
+# ── Session additions: envs, mlflow store, archives, adapter output dirs, parked-domain data ──
+venvs/
+mlruns/
+*.zip
+*.bak
+*.bak.json
+cpt_domain/
+sftrl_domain/
+data/domain/
+data/redqueen/
+*.db
+data/*.logpath
+data/.*logpath
+
+# epoch-curve artifacts (fp16 snapshots ~1.5GB each; mlflow store)
+cpt_epoch_curve/
+mlflow.db
+
+# ── Experiment output dirs (2026-08-23 cleanup) ──────────────────────────
+# Per steering/problems.md: experiments live in named subdirs, outputs under
+# results/ or harness_runs/. These are large, regenerable run artifacts —
+# never source. Ignored, NOT deleted. See CLEANUP.md for dispositions.
+harness_runs/
+results/
+e2e/
+replication_2x3/
+building_block/
+chunker_ab/
+stack_rig/
+temp_code_zip/
+semantic-review/
+skills_model/
+vibe_chain/
+rl_vibe/
+rl_variants/
+rl_abstain_base/
+mgpo/
+grpo_probe/
+
+# probes & sweeps
+relora_probe/
+lora_frontier/
+lora_chain/
+saturation_probe/
+halluc_probe/
+ft_lr_sweep/
+mask_probe/
+entigraph_ab/
+lion_probe/
+exposure_probe/
+diversity_interior/
+self_distill/
+replay_probe/
+qlora_probe/
+paraphrase_sft_diverse/
+cpt_gate_mini/
+cpt_probe_dose/
+cpt_probe_galore/
+cpt_probe_work/
+cpt_resized/
+cpt_span_s7/
+cpt_span_s42/
+cpt_span_s77/
+curation_high/
+curation_low/
+curation_random/
+sft_probe_dose/
+sft_probe_galore/
+sft_probe_nocpt/
+sft_probe_resized/
+heldout_cpt8bit_heldout/
+heldout_sft_heldout/
+module_attn_only/
+module_ffn_only/
+module_full/
+frontier_full8bit/
+frontier_full8bit_lo/
+frontier_full8bit_lo_fullsft/
+frontier_full8bit_vlo/
+frontier_full8bit_vlo_fullsft/
+frontier_full8bit_xlo/
+frontier_full8bit_xlo_fullsft/
+frontier_galore/
+frontier_lora_mlp/
+frontier_lora_mlp_fullsft/
+frontier_sft_full/
+frontier_sft_only/
+
+# large derived data (regenerable); canonical pools are tracked explicitly
+data/rl/calibration.json
+data/entigraph/
+data/entigraph_full/
+data/smoke/
+
+# spec gate escape hatch (local only)
+.spec/BYPASS
+
+# Scratch: disposable, never committed (CLAUDE.md hard default)
+.tmp/
+archive/adapter_injection/training/cpt_smoke/
+
+# stderr captures from detached runs
+*.err
+
+# local notes (never published)
+.specs/local_notes/

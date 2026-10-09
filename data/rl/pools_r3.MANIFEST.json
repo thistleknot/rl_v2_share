@@ -1,0 +1,155 @@
+{
+  "dataset": "R3 closed-book domain QA (trees-ensembles)",
+  "frozen_utc": "2026-08-26T23:17:15Z",
+  "files": {
+    "data/rl/pools_r3.jsonl": {
+      "sha256": "931c6fa41105d6cba50cd60e238f7025ed36047bd6ef13b488248fd99c06d702",
+      "rows": 201
+    },
+    "data/rl/eval_r3_skills.jsonl": {
+      "sha256": "2bf3165ef9e2c8b06bc8beb18eece4c1b78559b537f8f53b6596ec69abccf92b",
+      "rows": 3
+    },
+    "data/rl/cpt_r3_skills.jsonl": {
+      "sha256": "8d4c8f25d6e3f6df381b440dd4aa32eb6f969f02372f2dffe59f2df7018f19c0",
+      "rows": 137
+    },
+    "data/rl/sft_r3_skills.jsonl": {
+      "sha256": "4b22b5d2fe1184cec26bf363a7bb6972f3a7da135283ef40a863aa6bb0df2e05",
+      "rows": 97
+    },
+    "data/rl/cpt_skills_chunked_treesx.jsonl": {
+      "sha256": "c2e9691dc9ec59af8639f020e216cc5daa683cc8fc5194bd18ba85df32e5e894",
+      "rows": 87
+    }
+  },
+  "composition": {
+    "total": 201,
+    "pools": {
+      "C": 3,
+      "A": 101,
+      "B": 97
+    },
+    "categories_AB": {
+      "STEM": 65,
+      "Math": 44,
+      "Instruction": 69,
+      "Code": 20
+    },
+    "models": {
+      "qwen3.5-reasoning-thinking-256k:9b": 195,
+      "qwopus-coding-thinking-256k:9b": 6
+    },
+    "skills_trained": [
+      "trees-ensembles/adaboost",
+      "trees-ensembles/bagging",
+      "trees-ensembles/boosted-tree",
+      "trees-ensembles/boosting",
+      "trees-ensembles/classification-tree",
+      "trees-ensembles/decision-tree",
+      "trees-ensembles/ensemble-learning",
+      "trees-ensembles/ensemble-method",
+      "trees-ensembles/ensemble-of-tree",
+      "trees-ensembles/expected-gini",
+      "trees-ensembles/gini-impurity-index",
+      "trees-ensembles/gradient-boosting",
+      "trees-ensembles/random-forest",
+      "trees-ensembles/stacking-ensemble",
+      "trees-ensembles/xgboost"
+    ],
+    "skills_evaluated": [
+      "trees-ensembles/boosted-tree",
+      "trees-ensembles/ensemble-method",
+      "trees-ensembles/random-forest"
+    ]
+  },
+  "presumptions": {
+    "regime": "R3 only \u2014 no context; question carries its own setup; closed-book (\u00a73.5.1)",
+    "eval_frozen": "pool C = 3 items, one per EVAL_SKILL, never grows (\u00a71.4/\u00a71.6)",
+    "eval_vs_training": "training spans 15 skills, eval probes 3 \u2014 deliberate; widening the training corpus was \u00a71.6's remedy for cosine saturation",
+    "cosine_gate": "0.80, never relaxed; max eval x train measured 0.798",
+    "sft_rl_share_prompts": "RL reuses pool B's prompts (\u00a76.4) \u2014 convention, not leakage",
+    "answer_length_cap": "476 tokens = box-cox(lam=0.5) median + 2*MAD*1.4826 over the 18 VibeThinker R3/general golds",
+    "generators": "ONLY qwen3.5-reasoning-thinking-256k:9b and qwopus-coding-thinking-256k:9b",
+    "few_shot": "homogeneous per-category blocks from eval_canonical.jsonl R3/general, seed 20260826; VibeThinker contributes STYLE only, no items",
+    "known_imbalance": "Code=21 vs Instruction=69/STEM=66/Math=45 \u2014 Code lagged because it was routed to the 9x-slower qwopus model for most of the run"
+  },
+  "regenerate": "PYTHONPATH=src POOL_GEN_BACKEND=ollama python src/build_pools_r3.py --n 260 --batch 8 --workers 1 --resume --chunks data/rl/cpt_skills_chunked_treesx.jsonl",
+  "provenance_docs": [
+    "instructions.md \u00a71.6",
+    "\u00a73.5.1a",
+    "\u00a76.11",
+    "\u00a76.11.1",
+    "\u00a76.11.2"
+  ],
+  "partitioned_utc": "2026-08-27T01:47:11Z",
+  "partition": {
+    "design": "eval sized FIRST, remainder split EQUALLY 3 ways",
+    "sizes": {
+      "eval": 20,
+      "cpt": 60,
+      "sft": 60,
+      "rl": 60,
+      "spare": 1
+    },
+    "eval_ratio_of_train": "20/180 = 11.1%",
+    "eval_weighting": "VibeThinker measured R3 profile (R3_SHAPE_WEIGHTS), box-cox lam=0.5 -> PDF Math .331 / Code .254 / STEM .202 / Instruction .213",
+    "phase_weighting": "pool's own category mix, box-cox lam=0.5, allocated by DEFICIT-DRIVEN sampling across all 3 phases jointly: each draw goes to the (phase, category) cell furthest below its target ratio, recomputed after every draw. Sequential filling left RL with ZERO Code; round-robin fixed that but still drifted Math 15/16/7. Deficit-driven gives 12/13/13.",
+    "why_equal_phases": "an unequal split asserts a stage deserves more data \u2014 a claim no measurement supports. Phase ratio is an OPEN experimental variable to vary later with eval/seed held fixed (\u00a71.5).",
+    "rl_is_now_separate": "RL no longer reuses SFT prompts; the three phases are disjoint, so RL lift cannot be confused with prompt re-exposure",
+    "seed": 20260826,
+    "files": {
+      "data/rl/r3_eval.jsonl": {
+        "sha256": "88aeb2ff4ab407d34c1e946ab0e30ee4757043bb83b4e5d12110a718a7855a7e",
+        "rows": 20,
+        "categories": {
+          "Math": 7,
+          "Code": 5,
+          "STEM": 4,
+          "Instruction": 4
+        },
+        "skills": 14
+      },
+      "data/rl/r3_cpt.jsonl": {
+        "sha256": "7101591d0c2856c92c4d20193d633ac71b8b2c77c4dc05fda74958a94d870fc5",
+        "rows": 60,
+        "categories": {
+          "Math": 12,
+          "Code": 6,
+          "STEM": 21,
+          "Instruction": 21
+        },
+        "skills": 11
+      },
+      "data/rl/r3_sft.jsonl": {
+        "sha256": "e69f6f6b8c577dc650afad6c08e9112b26136d854954fe5722c822f2a42271f6",
+        "rows": 60,
+        "categories": {
+          "Math": 13,
+          "Code": 5,
+          "STEM": 21,
+          "Instruction": 21
+        },
+        "skills": 12
+      },
+      "data/rl/r3_rl.jsonl": {
+        "sha256": "294a4d7472a6a28792b48e0208dd995f8e1e005ab10f58d2389ec77c8756306d",
+        "rows": 60,
+        "categories": {
+          "Math": 13,
+          "Code": 5,
+          "STEM": 20,
+          "Instruction": 22
+        },
+        "skills": 9
+      }
+    },
+    "known_deviation": "Code is thin everywhere (6/5/5 per phase) because only 21 Code items exist in the pool -- a generation-time deficit, not a partition artefact.",
+    "verification": {
+      "disjoint": true,
+      "eval_question_leak": 0,
+      "max_cosine_eval_x_train": 0.79973,
+      "gate": 0.8
+    }
+  }
+}

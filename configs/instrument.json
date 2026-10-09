@@ -1,0 +1,40 @@
+{
+  "_": "THE FROZEN INSTRUMENT. Every tool that produces a score verifies this at startup and stamps it into its receipt. A drift fails at second 1 with a diff, never at hour 3. Change it ONLY between campaigns, never mid-campaign (instructions.md 1.4), and when you do, bump `campaign` so old receipts stay attributable.",
+  "campaign": "2026-09-26 r3 jev-binary-gated",
+  "rubric_path": "data/synthetic_domain_rubric.md",
+  "rubric_sha_stripped": "9470adb9f39935ac",
+  "rubric_note": "The sha the 2026-09-12 campaign froze (playbook.md:4051). Computed over the STRIPPED text -- that detail cost an afternoon, because a byte-for-byte compare said it matched nothing in git.",
+  "judge_model_remote": "qwen/qwen3.5-9b",
+  "judge_model_local": "qwen3.5-reasoning-thinking-256k:4b",
+  "judge_remote_required": true,
+  "judge_note": "JUDGE_REMOTE=1 routes judge.py through reward._openrouter_call. Without it every judge.py consumer silently scores on the local 4b while reward.py scores remote -- two judges, one board.",
+  "eval_file": "data/rl/r3_eval_canonical.jsonl",
+  "eval_n": 16,
+  "correct_floor": 0.5,
+  "protocol": "single",
+  "reads_per_cell": 1,
+  "k_samples_per_question": 1,
+  "resolution_note": "MEASURED 2026-09-15 on 96 cells: 3 cells had reads landing on BOTH sides of 0.70, each worth 1/16 = 6.25 points. A 1-question difference is INSIDE the judge's own instability at k=1. Raising k is the open lever; until it moves, do not call a 1-question difference a result.",
+  "mechanical_gates": [
+    "empty answer -> 0.0",
+    "answer ends in a colon (content-free stub) -> 0.0",
+    "never_states_an_answer (plan/preamble, no claim) -> 0.0",
+    "no EOS within the per-question budget -> reward 0.0",
+    "abstention -> 0.0"
+  ],
+  "gate_delta_note": "never_states_an_answer did NOT exist in the 2026-09-12 campaign. It fires only where the rubric's preamble band already scores 0.0, so the expected effect is nil -- but this is a KNOWN DELTA and receipts must not claim exact parity with that campaign.",
+  "datasets": {
+    "sft_train": "data/rl/r3_sft_subset.jsonl",
+    "straddle_measure": "data/rl/r3_rl.jsonl",
+    "eval": "data/rl/r3_eval_canonical.jsonl",
+    "disjointness": "sft vs rl overlap 0, sft vs eval overlap 0 (measured 2026-09-14)"
+  },
+  "bars": {
+    "hpo": "the arm's OWN start -- HPO-PASSED, nothing more",
+    "phase": "the previous phase's best -- the only bar the word WON applies to",
+    "all_time_high": "UNSET under Jev -- every number from the 9B campaign is on a different instrument."
+  },
+  "judge_jev_required": true,
+  "judge_model_jev": "open-jev-2b",
+  "judge_jev_note": "Operator 2026-09-26: reward and eval = Open-Jev-2B yes/no \"Is the candidate answer correct according to the reference answer?\" (src/reward.py JUDGE_JEV; judge.judge routes too). Q8_0 GGUF sha256 59e91d36676f769a on 192.168.3.18:8791, head+T in W:/jev/jev_head.json. Score 1 if p_yes >= 0.5 else 0. The rubric below is NOT read by Jev; its sha is kept only so this pin stays comparable. Previous campaign pin saved at data/instrument_2026-09-15_r3_e2e.json. GATE (2026-09-26, reward._jev_gate): short numeric answers (<=8 words) are correct only if their last number equals the gold's last number; prose must share a content word with the gold; otherwise 0 without consulting Jev. Ungated Jev paid a bare \"1\" on 40/60 golds and the RL policy collapsed to it (dispositions SWEEP60)."
+}

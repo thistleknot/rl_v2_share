@@ -50,14 +50,12 @@ To start at a given phase, point `--base` at the checkpoint of the phase before 
 
 ## Presentations
 
-All four are in `docs/`. [`docs/PROVENANCE.md`](docs/PROVENANCE.md) maps each slide to the concept it rests on, the entry in `docs/dispositions.md` that records the result, and the module that implements it. [`docs/INSPIRATIONS.md`](docs/INSPIRATIONS.md) lists every borrowed idea by name. The chess program is in `src/chess/`.
+Two decks in `docs/`. [`docs/PROVENANCE.md`](docs/PROVENANCE.md) maps each slide to the concept it rests on, the entry in `docs/dispositions.md` that records the result, and the module that implements it. [`docs/INSPIRATIONS.md`](docs/INSPIRATIONS.md) lists every borrowed idea by name. The chess program is in `src/chess/`.
 
 | Deck | Slides | What it is |
 |---|---|---|
-| [`RL_V2_talk_10min_final.pptx`](docs/RL_V2_talk_10min_final.pptx) | 12 | the short talk: why we had high hopes (base 4, SFT 5, first RL pass 9), then the 60-step and replay-sampler runs (slides 9 to 11) that never beat it, and why that points to a scale problem |
-| [`RL_lab_notebook.pptx`](docs/RL_lab_notebook.pptx) | 34 | decision-trees-and-ensembles notebook; chess algorithms on slides 28 to 31 (what was built, the recipe, the campaign, chess against the language model); the 60-step and replay-sampler plots on appendix slides 32 and 33 |
-| [`RL_V2_talk_10min.pptx`](docs/RL_V2_talk_10min.pptx) | 31 | the longer talk: full-parameter vs adapter |
-| [`RL_V2_report.pptx`](docs/RL_V2_report.pptx) | 113 | the full report |
+| [`RL_V2_rl.pptx`](docs/RL_V2_rl.pptx) | 32 | the language-model project: hypotheses, settings, method and verdict per RL idea; slide 30 is why we had high hopes (base 4, SFT 5, first RL pass 9), slides 28 to 29 are the 60-step and replay-sampler plots, slide 31 is what the eval can resolve |
+| [`RL_V2_chess.pptx`](docs/RL_V2_chess.pptx) | 4 | the chess agent: what was built, the recipe, the campaign, chess against the language model |
 
 ## The RL runs (figures)
 
@@ -442,7 +440,7 @@ Generated from the code by `python docs/ast_outline.py` (checked by `tests/test_
   - `def main`
   - `def test2`: Rung 2 — + domain-QA SFT (activate latent CPT knowledge). Reuses existing SFT adapters (on disk).
   - 3 private helpers
-- `eval/half_epoch_eval.py` (566 lines) F1 on the frozen eval at every half-epoch, in EVERY phase.
+- `eval/half_epoch_eval.py` (565 lines) F1 on the frozen eval at every half-epoch, in EVERY phase.
   - `def load_eval`
   - `def strip_reasoning`: Remove <think>...</think> traces before the judge sees the answer.
   - `def chat_wrap`: Build the prompt EXACTLY as training wrote it. Think is OFF everywhere.

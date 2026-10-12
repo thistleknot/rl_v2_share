@@ -14,7 +14,7 @@
 | Jev (small yes/no judge) as the reward | exploitable until guarded; rejected 8% of its own golds |
 | Transfer to unseen questions | eval 32 to 20 of 128, held-out 79 to 73 of 320: no transfer |
 
-**How to read the 9 of 16.** The 9-slide talk shows base 4, SFT 5, first RL pass 9 (of 16). That is why we had high hopes, and it is the only time RL reached 9. Every later, longer RL run tried to sustain it and never beat it, and eval never rose and held over a run:
+**How to read the 9 of 16.** RL deck slide 30 shows base 4, SFT 5, first RL pass 9 (of 16), all SFT then RL with no CPT. That is why we had high hopes, and it is the only time RL reached 9. Every later, longer RL run tried to sustain it and never beat it, and eval never rose and held over a run:
 
 | Run | Eval (of 16) | Receipt |
 |---|---|---|

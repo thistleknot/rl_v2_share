@@ -7,7 +7,7 @@
 | Test | Result |
 |---|---|
 | Full-parameter SFT | base 3 to 7 of 16 at epoch 2; the only phase that raised the eval |
-| Continued pre-training (CPT) | no lift |
+| Continued pre-training (CPT) | no lift; dropped, so the long RL runs go SFT then RL with no CPT |
 | LoRA adapter deposits, then RL | lost 0.06 to 0.27 on every route |
 | KL penalty (beta) | 0 or 0.001 blew up at step 19; 0.3 held 32 to 60 steps, then ran away |
 | Replay of judged answers; world model of the judge | both lost |
@@ -46,7 +46,7 @@ From the repo root, put `src` on the path once (`export PYTHONPATH=src`, or `$en
 | **Eval** (any phase) | `python -m rlv2 eval --model <dir> --tag <name>` | frozen 16-question eval | score file |
 | **HPO** | `python -m rlv2 hpo sft` / `python -m rlv2 hpo rl` | the phase's pool | Optuna study |
 
-To start at a given phase, point `--base` at the checkpoint of the phase before it (SFT without CPT: `--base` is the stock model). Each stage can be gated by an `hpo` search before its full run. `hpo sft` has no argument parser, so `--help` on it starts a real trial.
+CPT is optional and was not used for the long RL runs, which start from the SFT checkpoint. To start at a given phase, point `--base` at the checkpoint of the phase before it (SFT without CPT: `--base` is the stock model). Each stage can be gated by an `hpo` search before its full run. `hpo sft` has no argument parser, so `--help` on it starts a real trial.
 
 ## Presentations
 

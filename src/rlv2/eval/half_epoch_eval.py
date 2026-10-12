@@ -1,7 +1,7 @@
 """src/rlv2/eval/half_epoch_eval.py — F1 on the frozen eval at every half-epoch, in EVERY phase.
 
 Notes: `chat_wrap` here is the eval wrapper; docs/dispositions.md "THE EVAL PROMPT IS NOT THE TRAINING PROMPT"
-(2026-09-25) records that training used the model's own chat template instead. Slides: RL deck slides 23, 28 and 29 (docs/PROVENANCE.md).
+(2026-09-25) records that training used the model's own chat template instead. Slides: RL deck slides 22, 27 and 28 (docs/PROVENANCE.md).
 
 OWNER REQUIREMENT (2026-08-27): measurement is not a per-phase option. CPT, SFT and RL all
 report at every half-epoch boundary, whether the run is an HPO trial or a full run, and each

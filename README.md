@@ -14,7 +14,7 @@
 | Jev (small yes/no judge) as the reward | exploitable until guarded; rejected 8% of its own golds |
 | Transfer to unseen questions | eval 32 to 20 of 128, held-out 79 to 73 of 320: no transfer |
 
-**How to read the 9 of 16.** RL deck slide 30 shows base 4, SFT 5, first RL pass 9 (of 16), all SFT then RL with no CPT. That is why we had high hopes, and it is the only time RL reached 9. Every later, longer RL run tried to sustain it and never beat it, and eval never rose and held over a run:
+**How to read the 9 of 16.** RL deck slide 29 shows base 4, SFT 5, first RL pass 9 (of 16), all SFT then RL with no CPT. That is why we had high hopes, and it is the only time RL reached 9. Every later, longer RL run tried to sustain it and never beat it, and eval never rose and held over a run:
 
 | Run | Eval (of 16) | Receipt |
 |---|---|---|
@@ -54,7 +54,7 @@ Two decks in `docs/`. [`docs/PROVENANCE.md`](docs/PROVENANCE.md) maps each slide
 
 | Deck | Slides | What it is |
 |---|---|---|
-| [`RL_V2_rl.pptx`](docs/RL_V2_rl.pptx) | 32 | the language-model project: hypotheses, settings, method and verdict per RL idea; slide 30 is why we had high hopes (base 4, SFT 5, first RL pass 9), slides 28 to 29 are the 60-step and replay-sampler plots, slide 31 is what the eval can resolve |
+| [`RL_V2_rl.pptx`](docs/RL_V2_rl.pptx) | 31 | the language-model project: hypotheses, settings, method and verdict per RL idea; slide 29 is why we had high hopes (base 4, SFT 5, first RL pass 9), slides 27 to 28 are the 60-step and replay-sampler plots, slide 30 is what the eval can resolve |
 | [`RL_V2_chess.pptx`](docs/RL_V2_chess.pptx) | 4 | the chess agent: what was built, the recipe, the campaign, chess against the language model |
 
 ## The RL runs (figures)

@@ -1,7 +1,7 @@
 """src/rlv2/judge/judge.py — ONE reasoned score per answer, from one local judge.
 
 Notes: docs/dispositions.md "JUDGE CHANGE" and "JEV GATE adopted" (2026-09-26); concept: Inverse RL /
-Reward Modeling (docs/INSPIRATIONS.md). Slides: docs/PROVENANCE.md rows for RL deck slides 7 and 21.
+Reward Modeling (docs/INSPIRATIONS.md). Slides: docs/PROVENANCE.md rows for RL deck slides 7 and 20.
 
 REQ-J1/J2. One call returns the judge's reasoning and then a single number, and the verdict
 is DERIVED from where that number falls:

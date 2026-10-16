@@ -49,7 +49,7 @@ Old paths cited on RL deck slides, and where they live now:
 | 24 Defects | none | `dispositions.md`: six mechanism fixes (571); THE EVAL PROMPT IS NOT THE TRAINING PROMPT (1328) | `src/rlv2/eval/half_epoch_eval.py` (`chat_wrap`, the eval wrapper) |
 | 29 Appendix: 60-step run | Target Networks | `docs/run-logs/rl_lr3e6.md`; `dispositions.md` (1307, 1328) | `docs/grpo_one_file.py` |
 | 30 Appendix: replay sampler | Replay Buffer | `dispositions.md` (1376) | `docs/grpo_one_file.py` |
-| 31 Context: first RL pass 9 of 16 | Empirical Comparison Metrics | `dispositions.md`: THE LOCKED MECHANISM AND THE UNIFORM BOARD (247). The exact 9 of 16 line was not located | `src/rlv2/eval/score_arms.py`, `src/rlv2/eval/rl_calibration_eval.py` |
+| 31 Context: first RL pass 9 of 16 | Empirical Comparison Metrics | `dispositions.md`: THE LOCKED MECHANISM AND THE UNIFORM BOARD (247); COVERAGE LANE CLOSED, probe3_locked 9/16 (344); the board "base 4 · SFT 5 · RL 9" (375); figure `docs/figures/critical_lifts.png` | `src/rlv2/eval/score_arms.py`, `src/rlv2/eval/rl_calibration_eval.py` |
 | 32 Scale arithmetic | Bias-Variance Tradeoff | `SETTLED.md` (same-checkpoint 6/16 and 7/16); arithmetic in the slide notes | none |
 
 Rows for slides 1 to 3, 25 to 28 and 33 are framing, synthesis and lessons; they cite no module.

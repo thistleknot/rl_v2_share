@@ -54,7 +54,7 @@ Two decks in `docs/`. [`docs/PROVENANCE.md`](docs/PROVENANCE.md) maps each slide
 
 | Deck | Slides | What it is |
 |---|---|---|
-| [`RL_V2_rl.pptx`](docs/RL_V2_rl.pptx) | 33 | the language-model project: hypotheses, settings, method and verdict per RL idea; slide 31 is why we had high hopes (base 4, SFT 5, first RL pass 9), slides 29 to 30 are the 60-step and replay-sampler plots, slide 32 is what the eval can resolve |
+| [`RL_V2_rl.pptx`](docs/RL_V2_rl.pptx) | 33 | the language-model project: hypotheses, settings, method and verdict per RL idea; slide 31 is why we had high hopes (base 4, SFT 5, first RL pass 9), slides 15 to 16 are the 60-step and replay-sampler plots, slide 32 is what the eval can resolve |
 | [`RL_V2_chess.pptx`](docs/RL_V2_chess.pptx) | 4 | the chess agent: what was built, the recipe, the campaign, chess against the language model |
 
 ## The RL runs (figures)

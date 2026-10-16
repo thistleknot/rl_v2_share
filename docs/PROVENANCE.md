@@ -36,23 +36,23 @@ Old paths cited on RL deck slides, and where they live now:
 | 11 Grounding table | Policy Gradients; Boltzmann / Softmax Exploration; Replay Buffer; Target Networks; The Deadly Triad; Model-Free vs Model-Based; Inverse RL / Reward Modeling; Reward Shaping and PBRS | the table's own rows point to entries 5 to 11 | see the rows below |
 | 12 Instrument | Empirical Comparison Metrics | `dispositions.md`: SIGNAL (79), NOISE (114) | `src/rlv2/train/rl/instrument.py` (the frozen instrument stamped into every receipt), `src/rlv2/eval/score_arms.py` |
 | 13 Adapters versus full-parameter SFT | n/a (supervised learning) | `dispositions.md`: LoRA Chain Approaches, ALL FALSIFIED (3); Proven Path (33) | `src/rlv2/train/sft/train.py` |
-| 14 On-policy RL | Policy Gradients / Actor-Critic; On-Policy vs Off-Policy in One Line | `dispositions.md`: SIGNAL (79) | `src/rlv2/train/rl/grpo.py` |
-| 15 What gives RL gradient | n/a | `dispositions.md`: THE SFT THESIS (747), SFT checkpoint MEASURED (792) | `src/rlv2/train/sft/train.py` |
-| 16 Reward shaping | Reward Shaping and PBRS | `dispositions.md` (827) | `src/rlv2/judge/reward.py` |
-| 17 KL penalty and stability | Target Networks | `dispositions.md`: rl_kl03 (1027), rl_lr3e6 (1307) | `docs/grpo_one_file.py` |
-| 18 Shape of a good run | Empirical Comparison Metrics | `dispositions.md`: Which run crossed (1252) | none |
-| 19 Exploration | Exploration vs Exploitation; Optimistic Initialization in Bandits | `dispositions.md`: RECORD SAMPLER AS RUN (1167) | `docs/grpo_one_file.py` |
-| 20 Replay buffer | Replay Buffer | `dispositions.md`: REPLAY SAMPLER (1080), rl_replay2 (1376) | `docs/grpo_one_file.py` |
-| 21 Model-based RL | Model-Free vs Model-Based; Nonlinear Learned Dynamics | `dispositions.md`: WORLD-MODEL REWARD ROUTING (925) | `src/rlv2/train/rl/prompt_world_model.py` |
-| 22 Reward modeling, Jev | Inverse RL / Reward Modeling | `dispositions.md`: JUDGE CHANGE (1424), JEV GATE adopted (1480) | `src/rlv2/judge/judge.py` |
-| 23 Generalization | Function Approximation Pathologies | `dispositions.md`: SWEEP60 VERDICT (1569) | n/a |
-| 24 Defects | none | `dispositions.md`: six mechanism fixes (571); THE EVAL PROMPT IS NOT THE TRAINING PROMPT (1328) | `src/rlv2/eval/half_epoch_eval.py` (`chat_wrap`, the eval wrapper) |
-| 29 Appendix: 60-step run | Target Networks | `docs/run-logs/rl_lr3e6.md`; `dispositions.md` (1307, 1328) | `docs/grpo_one_file.py` |
-| 30 Appendix: replay sampler | Replay Buffer | `dispositions.md` (1376) | `docs/grpo_one_file.py` |
+| 14 Shape of a good run | Empirical Comparison Metrics | `dispositions.md`: Which run crossed (1252) | none |
+| 15 Long run: 60-step run | Target Networks | `docs/run-logs/rl_lr3e6.md`; `dispositions.md` (1307, 1328) | `docs/grpo_one_file.py` |
+| 16 Long run: replay sampler | Replay Buffer | `dispositions.md` (1376) | `docs/grpo_one_file.py` |
+| 17 On-policy RL | Policy Gradients / Actor-Critic; On-Policy vs Off-Policy in One Line | `dispositions.md`: SIGNAL (79) | `src/rlv2/train/rl/grpo.py` |
+| 18 What gives RL gradient | n/a | `dispositions.md`: THE SFT THESIS (747), SFT checkpoint MEASURED (792) | `src/rlv2/train/sft/train.py` |
+| 19 Reward shaping | Reward Shaping and PBRS | `dispositions.md` (827) | `src/rlv2/judge/reward.py` |
+| 20 KL penalty and stability | Target Networks | `dispositions.md`: rl_kl03 (1027), rl_lr3e6 (1307) | `docs/grpo_one_file.py` |
+| 21 Exploration | Exploration vs Exploitation; Optimistic Initialization in Bandits | `dispositions.md`: RECORD SAMPLER AS RUN (1167) | `docs/grpo_one_file.py` |
+| 22 Replay buffer | Replay Buffer | `dispositions.md`: REPLAY SAMPLER (1080), rl_replay2 (1376) | `docs/grpo_one_file.py` |
+| 23 Model-based RL | Model-Free vs Model-Based; Nonlinear Learned Dynamics | `dispositions.md`: WORLD-MODEL REWARD ROUTING (925) | `src/rlv2/train/rl/prompt_world_model.py` |
+| 24 Reward modeling, Jev | Inverse RL / Reward Modeling | `dispositions.md`: JUDGE CHANGE (1424), JEV GATE adopted (1480) | `src/rlv2/judge/judge.py` |
+| 25 Generalization | Function Approximation Pathologies | `dispositions.md`: SWEEP60 VERDICT (1569) | n/a |
+| 26 Defects | none | `dispositions.md`: six mechanism fixes (571); THE EVAL PROMPT IS NOT THE TRAINING PROMPT (1328) | `src/rlv2/eval/half_epoch_eval.py` (`chat_wrap`, the eval wrapper) |
 | 31 Context: first RL pass 9 of 16 | Empirical Comparison Metrics | `dispositions.md`: THE LOCKED MECHANISM AND THE UNIFORM BOARD (247); COVERAGE LANE CLOSED, probe3_locked 9/16 (344); the board "base 4 · SFT 5 · RL 9" (375); figure `docs/figures/critical_lifts.png` | `src/rlv2/eval/score_arms.py`, `src/rlv2/eval/rl_calibration_eval.py` |
 | 32 Scale arithmetic | Bias-Variance Tradeoff | `SETTLED.md` (same-checkpoint 6/16 and 7/16); arithmetic in the slide notes | none |
 
-Rows for slides 1 to 3, 25 to 28 and 33 are framing, synthesis and lessons; they cite no module.
+Rows for slides 1 to 3, 27 to 30 and 33 are framing, synthesis and lessons; they cite no module.
 
 
 ## Chess deck (`RL_V2_chess.pptx`, 4 slides)

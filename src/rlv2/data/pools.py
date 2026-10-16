@@ -1,7 +1,7 @@
 """src/rlv2/data/pools.py — §6.11 R3-only three-pool generation over the 3 trees-ensembles skills.
 
 Notes: docs/SETTLED.md; docs/dispositions.md "skills_model PROVENANCE" (2026-09-11). Slides: docs/PROVENANCE.md rows for
-RL deck slides 4 and 5.
+RL deck slides 4 to 6.
 
 Generates self-contained (no-context) QA from the 24 chunks, stratified by chunk, with a
 running exclusion list, a 0.80 cosine gate, deixis rejection, and full provenance.
